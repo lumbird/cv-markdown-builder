@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #3f3d59;
+  --primary-color-contrast: white;
+
+ --background-color: #f0f0f0;
+  --background-color-contrast: black;
+
+  --paper-color: #ffffff;
+  --paper-color-contrast: black;
+
+}
+
+@mixin theme-color($color) {
+  --color: var(--#{$color}-color);
+  --color-contrast: var(--#{$color}-color-contrast);
+}

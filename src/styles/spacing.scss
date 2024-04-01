@@ -1,0 +1,255 @@
+// Spacing values in powers, linear and fibonacci numbers
+$default-scale: 'powers';
+$spacing-indices: 0 1 2 3 4 5 6 7 8 9 10;
+$spacing-values-power: 0rem 0.5rem 1rem 2rem 4rem 8rem 16rem 32rem 64rem 128rem 256rem;
+$spacing-values-linear: 0rem 0.5rem 1rem 1.5rem 2rem 2.5rem 3rem 3.5rem 4rem 4.5rem 5rem;
+$spacing-values-fibonacci: 0rem 1rem 2rem 3rem 5rem 8rem 13rem 21rem 34rem 55rem 89rem;
+
+// Clear all the margins and spacing
+.clear-margin, .clear-spacing {
+    margin: 0;
+}
+
+.clear-padding, .clear-spacing {
+    padding: 0;
+}
+
+// Impure Function: Using the spacing indices to index the powers array
+@function indexPowers($i) {
+    $index: nth($spacing-indices, $i + 1);
+    $value: nth($spacing-values-power, $i + 1);
+    @return $value;
+}
+
+// Impure Function: Using the spacing indices to index the linear array
+@function indexLinear($i) {
+    $index: nth($spacing-indices, $i + 1);
+    $value: nth($spacing-values-linear, $i + 1);
+    @return $value;
+}
+
+// Impure Function: Using the spacing indices to index the fibonacci array
+@function indexFibonacci($i) {
+    $index: nth($spacing-indices, $i + 1);
+    $value: nth($spacing-values-fibonacci, $i + 1);
+    @return $value;
+}
+
+// Pure Function: Intermediate function to index the scales
+@function indexScales($i, $type) {
+    @if $type == "powers" {
+        @return indexPowers($i);
+    }
+    @else if $type == "linear" {
+        @return indexLinear($i);
+    }
+    @else if $type == "fibonacci" {
+        @return indexFibonacci($i);
+    }
+    @else {
+        // The default is powers
+        @return indexPowers($i);
+    }
+}
+
+@mixin flex-gap($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    gap: $value;
+}
+
+@mixin b($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    border-radius: $value;
+}
+
+@mixin mtb($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-top: $value;
+    margin-bottom: $value;
+}
+
+@mixin mt($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-top: $value;
+}
+
+@mixin mb($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-bottom: $value;
+}
+
+@mixin mlr($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-left: $value;
+    margin-right: $value;
+}
+
+@mixin ml($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-left: $value;
+}
+
+@mixin mr($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin-right: $value;
+}
+
+@mixin ptb($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-top: $value;
+    padding-bottom: $value;
+}
+
+@mixin pt($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-top: $value;
+}
+
+@mixin pb($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-bottom: $value;
+}
+
+@mixin plr($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-left: $value;
+    padding-right: $value;
+}
+
+@mixin pl($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-left: $value;
+}
+
+@mixin pr($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding-right: $value;
+}
+
+@mixin m($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    margin: $value;
+}
+
+@mixin p($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    padding: $value;
+}
+
+@mixin width($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    width: $value;
+}
+
+@mixin height($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    height: $value;
+}
+
+@mixin square($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    width: $value;
+    height: $value;
+}
+
+@mixin max-width($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    max-width: $value;
+}
+
+@mixin max-height($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    max-height: $value;
+}
+
+@mixin max-square($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    max-width: $value;
+    max-height: $value;
+}
+
+@mixin min-width($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    min-width: $value;
+}
+
+@mixin min-height($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    min-height: $value;
+}
+
+@mixin min-square($indx, $type: $default-scale) {
+    $value: indexScales($indx, $type);
+    min-width: $value;
+    min-height: $value;
+}
+
+
+
+
+
+
+
+// Builds all the different sizing types
+//@include spacings($spacing-indices, $spacing-values-power, '');
+//@include spacings($spacing-indices, $spacing-values-linear, 'l');
+//@include spacings($spacing-indices, $spacing-values-fibonacci , 'f');
+
+@mixin round {
+    border-radius: 100%;
+}
+
+@mixin text-center {
+    text-align: center;
+}
+
+@mixin width-full {
+    width: 100%;
+}
+
+@mixin square-full {
+    width: 100%;
+}
+
+@mixin height-full {
+    height: 100%;
+}
+
+@mixin square-full {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin max-width-full {
+    max-width: 100%;
+}
+
+@mixin max-square-full {
+    max-width: 100%;
+}
+
+@mixin max-height-full {
+    max-height: 100%;
+}
+
+@mixin max-square-full {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@mixin min-width-full {
+    min-width: 100%;
+}
+
+@mixin min-square-full {
+    min-width: 100%;
+}
+
+@mixin min-height-full {
+    min-height: 100%;
+}
+
+@mixin min-square-full {
+    min-width: 100%;
+    min-height: 100%;
+}

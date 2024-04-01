@@ -1,0 +1,83 @@
+body, html {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    font-family: 'Albert Sans';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    @include m(0);
+    @include p(0);
+    @include width-full;
+    @include height-full;
+    @include theme-color(background);
+    background-color: var(--color);
+}
+
+#container {
+    @include theme-color(paper);
+    @include mlr(0);
+    @include p(0);
+    width: 210mm;
+    height: 594mm; // A4 height * 2
+    overflow: hidden;
+    background-color: var(--color);
+    box-shadow: #d9d9d9 0 0 9px;
+}
+
+#content {
+
+}
+
+h2, h3, h4, h5, p {
+    @include m(0);
+    @include p(0);
+    @include mt(1);
+    font-size: 1rem;
+}
+
+ul, ol {
+    @include mlr(3);
+    @include plr(2);
+    @include ptb(0);
+    @include mb(0);
+    @include mt(1);
+}
+
+table {
+    @include m(0);
+    @include p(0);
+    @include mt(1);
+    @include width-full;
+}
+
+
+/* centeralise the headings */
+h1, h6 {
+    @include m(0);
+    @include p(0);
+    @include mt(1);
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    @include theme-color(primary);
+    background-color: var(--color);
+    color: var(--color-contrast);
+}
+
+h2 {
+    //border-radius: 4px;
+    @include plr(2);
+    @include ptb(1);
+}
+
+h6 {
+    font-weight:100;
+}
+
+p, table {
+    @include plr(2);
+}
